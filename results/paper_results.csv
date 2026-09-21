@@ -1,0 +1,10 @@
+Image,Method,FP,FN,MR (%),Accuracy (%),Dice,IoU
+1,No aggregation,3448,612,6.02,93.98,0.815,0.688
+1,Classical aggregation,2063,1201,4.84,95.16,0.836,0.719
+1,Partial aggregation,1871,1843,5.51,94.49,0.806,0.675
+2,No aggregation,1366,3404,7.08,92.92,0.725,0.569
+2,Classical aggregation,1451,3274,7.01,92.99,0.731,0.576
+2,Partial aggregation,1908,2240,6.16,93.84,0.782,0.643
+3,No aggregation,1979,549,3.75,96.25,0.871,0.771
+3,Classical aggregation,2195,516,4.02,95.98,0.863,0.760
+3,Partial aggregation,2380,477,4.24,95.76,0.858,0.751
