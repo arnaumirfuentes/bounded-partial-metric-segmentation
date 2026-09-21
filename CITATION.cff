@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both this repository and the accompanying manuscript."
+title: "Bounded Partial Metric Segmentation"
+type: software
+authors:
+  - family-names: "Mir-Fuentes"
+    given-names: "Arnau"
+    orcid: "https://orcid.org/0000-0001-5914-9860"
+  - family-names: "Valero"
+    given-names: "Oscar"
+    orcid: "https://orcid.org/0000-0003-4710-1338"
+repository-code: "https://github.com/arnaumirfuentes/bounded-partial-metric-segmentation"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Aggregation of Bounded Partial Metric Spaces: The Product-Space Case"
+  authors:
+    - family-names: "Mir-Fuentes"
+      given-names: "Arnau"
+      orcid: "https://orcid.org/0000-0001-5914-9860"
+    - family-names: "Valero"
+      given-names: "Oscar"
+      orcid: "https://orcid.org/0000-0003-4710-1338"
+  year: 2026
