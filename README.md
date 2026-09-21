@@ -8,13 +8,13 @@ The repository contains the liver-segmentation experiment used to illustrate the
 
 Three variants of the same modified fuzzy c-means procedure are considered:
 
-1. **Classical method without aggregation**
+1. **Classical method without aggregation**  
    `D0(g,h) = |g-h|`.
 
-2. **Classical product-space aggregation**
+2. **Classical product-space aggregation**  
    `DC(u,v) = p_sp(u_sp,v_sp) + 7 |u_gray-v_gray|`.
 
-3. **Partial-metric product-space aggregation**
+3. **Partial-metric product-space aggregation**  
    `DP(u,v) = p_sp(u_sp,v_sp) + 7 p_gray(u_gray,v_gray)`, where
 
    `p_gray(x,y) = |x-y| / (0.4 + max{x,y}) + 0.2`.
@@ -41,6 +41,8 @@ The spatial component is the Euclidean metric on normalized pixel coordinates.
 ```text
 .
 ├── README.md
+├── CITATION.cff
+├── LICENSE
 ├── requirements.txt
 ├── scripts/
 │   └── run_experiment.py
@@ -71,6 +73,8 @@ Activate the environment and run:
 pip install -r requirements.txt
 ```
 
+A Conda environment can be used instead if preferred.
+
 ## Running the experiment
 
 After placing the local data in the structure described in `data/README.md`, run:
@@ -89,6 +93,32 @@ The numerical values reported in the manuscript are included in:
 - `results/paper_summary.csv`
 
 The experiment uses only three MRI slices and is intended as an illustration of the mathematical framework, not as a clinical validation or as evidence of statistical superiority of one segmentation method.
+
+## Reproducibility check
+
+The repository was tested locally on Windows using a newly created Conda environment with Python 3.11. Running
+
+```bash
+python scripts/run_experiment.py
+```
+
+completed all nine experiments (three MRI images × three clustering variants) and reproduced the per-image FP, FN, misclassification rate, accuracy, Dice, and IoU values reported in the manuscript to the displayed precision.
+
+For example:
+
+- Image 1, classical aggregation: Dice = `0.8365`, IoU = `0.7189`.
+- Image 2, partial aggregation: Dice = `0.7824`, IoU = `0.6425`.
+- Image 3, no aggregation: Dice = `0.8710`, IoU = `0.7714`.
+
+The current `scikit-image` version may emit a deprecation warning for `morphology.square`; this warning does not affect the numerical results of the present experiment.
+
+## Citation
+
+If you use this code, please cite the accompanying manuscript and this repository. Citation metadata are provided in `CITATION.cff`.
+
+## License
+
+The code in this repository is released under the MIT License. See `LICENSE`.
 
 ## Manuscript
 
