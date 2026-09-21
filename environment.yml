@@ -1,0 +1,14 @@
+name: bounded-pm
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - numpy
+      - matplotlib
+      - pydicom
+      - opencv-python
+      - scikit-learn
+      - scikit-image
+      - scipy
