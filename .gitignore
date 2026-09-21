@@ -15,11 +15,16 @@ env/
 .DS_Store
 Thumbs.db
 
+# Medical-image files (extra safeguard)
+*.dcm
+*.dicom
+
 # Local data: MRI/DICOM images and reference masks are not versioned
 data/*
 !data/README.md
 
 # Generated experiment outputs
 results/*
+!results/README.md
 !results/paper_results.csv
 !results/paper_summary.csv
