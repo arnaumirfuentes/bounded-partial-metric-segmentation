@@ -1,0 +1,4 @@
+Method,Mean MR (%),Mean Accuracy (%),Mean Dice,Mean IoU
+No aggregation,5.618,94.382,0.804,0.676
+Classical aggregation,5.292,94.708,0.810,0.685
+Partial aggregation,5.302,94.698,0.815,0.689
