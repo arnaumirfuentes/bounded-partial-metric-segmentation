@@ -43,54 +43,87 @@ The spatial component is the Euclidean metric on normalized pixel coordinates.
 ├── README.md
 ├── CITATION.cff
 ├── LICENSE
+├── environment.yml
 ├── requirements.txt
 ├── scripts/
 │   └── run_experiment.py
 ├── data/
 │   └── README.md
 └── results/
+    ├── README.md
     ├── paper_results.csv
     └── paper_summary.csv
 ```
 
-## Data
+## Data availability
 
-The MRI/DICOM images and manually delineated reference masks are **not distributed in this repository**. The experiment in the manuscript is illustrative and the reference masks were not independently validated by a radiologist.
+The MRI/DICOM images and manually delineated reference masks used in the manuscript are **not distributed in this repository**. They must be available locally in order to rerun the experiment.
 
-See `data/README.md` for the expected local directory structure.
+The reference masks are used only for evaluation; they are not used to fit the clustering models or to select the liver cluster. They were manually delineated for this illustrative experiment and were not independently validated by a radiologist.
+
+See `data/README.md` for the expected local directory structure. Do not commit DICOM files or reference masks to this repository unless redistribution rights and de-identification have been verified.
 
 ## Installation
 
-A recent Python 3 installation is required. Create a virtual environment and install the dependencies:
+The repository has been tested with **Python 3.11**.
+
+### Option A: Conda
+
+From the repository root:
+
+```bash
+conda env create -f environment.yml --solver=classic
+conda activate bounded-pm
+```
+
+If your Conda installation does not require the classic solver, `--solver=classic` may be omitted.
+
+### Option B: venv + pip
+
+Create an environment:
 
 ```bash
 python -m venv .venv
 ```
 
-Activate the environment and run:
+Activate it on Windows:
+
+```text
+.venv\Scripts\activate
+```
+
+or on macOS/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+Then install the dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-A Conda environment can be used instead if preferred.
-
 ## Running the experiment
 
-After placing the local data in the structure described in `data/README.md`, run:
+After placing the local data in the structure described in `data/README.md`, run from the repository root:
 
 ```bash
 python scripts/run_experiment.py
 ```
 
-The script executes the three clustering variants for the three images, applies the same cluster-selection and morphological post-processing procedure, evaluates the resulting masks, and writes the outputs to `results/`.
+The script executes the three clustering variants for the three images, applies the same cluster-selection and morphological post-processing procedure, evaluates the resulting masks, and writes generated outputs to `results/`.
+
+The script currently has `SHOW_FIGURES = True`, so figures are displayed during execution. This can be set to `False` for a non-interactive run; it does not change the numerical procedure.
 
 ## Reported results
 
-The numerical values reported in the manuscript are included in:
+The numerical values reported in the manuscript are preserved separately from generated output:
 
-- `results/paper_results.csv`
-- `results/paper_summary.csv`
+- `results/paper_results.csv`: per-image values reported in the manuscript.
+- `results/paper_summary.csv`: means reported in the manuscript.
+
+See `results/README.md` for details.
 
 The experiment uses only three MRI slices and is intended as an illustration of the mathematical framework, not as a clinical validation or as evidence of statistical superiority of one segmentation method.
 
@@ -110,7 +143,9 @@ For example:
 - Image 2, partial aggregation: Dice = `0.7824`, IoU = `0.6425`.
 - Image 3, no aggregation: Dice = `0.8710`, IoU = `0.7714`.
 
-The current `scikit-image` version may emit a deprecation warning for `morphology.square`; this warning does not affect the numerical results of the present experiment.
+The current `scikit-image` version may emit a deprecation warning for `morphology.square`; this warning does not affect the numerical results of the verified run.
+
+Because the image data are not distributed here, an independent rerun requires legitimate access to the same local input data and reference masks.
 
 ## Citation
 
@@ -118,7 +153,7 @@ If you use this code, please cite the accompanying manuscript and this repositor
 
 ## License
 
-The code in this repository is released under the MIT License. See `LICENSE`.
+The **code and repository documentation** are released under the MIT License. See `LICENSE`. This license does not grant rights to any MRI data or reference masks, which are not included in the repository.
 
 ## Manuscript
 
