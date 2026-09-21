@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local data: MRI/DICOM images and reference masks are not versioned
+data/*
+!data/README.md
+
+# Generated experiment outputs
+results/*
+!results/paper_results.csv
+!results/paper_summary.csv
